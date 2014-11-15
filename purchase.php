@@ -19,7 +19,7 @@
 			<?php } ?>
 		</div>
 		<input type="hidden" name="action" value="purchase" />
-		<button type="submit" class="btn btn-default">Purchase</button>
+		<button type="submit" class="btn btn-default active">Purchase</button>
 	</form>
 </div>
 <?php

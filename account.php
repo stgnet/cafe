@@ -5,10 +5,12 @@ $refresh='30;http://cafe.stg.net/menu.php';
 require 'config.php';
 require 'head.php';
 
-if (!empty($_POST['email'])) {
-	$user = $db_users->record(array('email'=>$_POST['email']));
+$_GOP=array_merge($_GET,$_POST);
+if (!empty($_GOP['email'])) {
+	$email=$_GOP['email'];
+	$user = $db_users->record(array('email'=>$email));
 	if (!$user) {
-		echo '<h3 class="bg-warning">No account found for '.$_POST['email'].'</h3>';
+		echo '<h3 class="bg-warning">No account found for '.$email.'</h3>';
 		require 'foot.php';
 		return;
 	}
