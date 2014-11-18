@@ -5,7 +5,11 @@
 		'Menu' => 'menu.php',
 		'Purchase' => 'purchase.php',
 		'Account' => 'account.php',
-		'FAQ' => 'faq.php'
+		'Help' => array(
+			'About' => 'about.php',
+			'FAQ' => 'faq.php',
+			'Suggest' => 'suggest.php'
+		)
 	);
 	$menu_right=array(
 		'Admin' => array(

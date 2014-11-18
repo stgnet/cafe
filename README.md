@@ -24,6 +24,8 @@ enter your email address, then in one of the Item rows start typing the
 name of the item you are purchasing and a list of matching items will
 be displayed.  Select the item to populate the price.  If the item to
 be purchased is not found, enter a description and the price manually.
+Once the payment is submitted to be recorded in the database, a receipt
+of the transaction is emailed to you.
 
 Account
 -------

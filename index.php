@@ -9,6 +9,6 @@ if ($_SERVER['REMOTE_ADDR'] == '216.207.245.1')
 }
 
 unset($_SERVER['PHP_AUTH_PW']);
-mail('scott@griepentrog.com','CAFE ACCESS DENIED '.$_SERVER['REMOTE_ADDR'],print_r($_SERVER,true));
+mail('scott@griepentrog.com','CAFE ACCESS DENIED '.$_SERVER['REMOTE_ADDR'].' '.gethostbyaddr($_SERVER['REMOTE_ADDR']),print_r($_SERVER,true));
 
 die('<h3>Access Denied</h3>');
