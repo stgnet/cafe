@@ -10,6 +10,9 @@ if (!empty($_POST)) {
 }
 	
 ?>
+<div class="container well">
+	<h5>There are no questions yet.</h5>
+</div>
 <div class="container">
 	<form role="form" action="faq.php" method="post">
 		<div class="form-group">

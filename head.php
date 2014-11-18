@@ -8,7 +8,8 @@
 		'Help' => array(
 			'About' => 'about.php',
 			'FAQ' => 'faq.php',
-			'Suggest' => 'suggest.php'
+			'Suggest' => 'suggest.php',
+			'Changes' => 'changes.php'
 		)
 	);
 	$menu_right=array(
