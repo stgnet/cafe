@@ -18,6 +18,9 @@ foreach ($trans as $tran) {
 	$balance[$email]+=$amount;
 }
 
+// sort to put most negative balance at top
+asort($balance, SORT_NUMERIC);
+
 // go back through and make sure user records are correct
 foreach ($balance as $email => $bal) {
 	// look up the user record
