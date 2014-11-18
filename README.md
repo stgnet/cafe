@@ -1,8 +1,5 @@
 CAFE Honor Sheet
 ================
-
-Description
------------
 This application provides a convenient online method of recording
 "Honor Sheet" cafe transactions that were previously done on paper.
 
