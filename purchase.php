@@ -10,7 +10,9 @@
 		<div class="form-group">
 			<?php foreach (array(1,2,3,4,5) as $count) { ?>
 			<div class="form-inline">
+				<!--
 				<label for="item1">Item</label>
+				-->
 				<div class="input-group">
 					<input type="text" class="form-control items" name="items[]" id="item<?php echo $count; ?>" placeholder="Item" />
 					<div class="input-group-addon">$</div><input type="text" class="form-control" name="costs[]" id="cost<?php echo $count; ?>" />
