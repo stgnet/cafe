@@ -61,11 +61,11 @@ foreach ($items as $index => $item) {
 	if (empty($item) && empty($cost)) continue;
 	if (empty($item)) $item="--unknown--";
 
+	table_row($item, $cost);
 	if ($_POST['action']!='payment') {
 		$cost=0.0-$cost;
 	}
 	
-	table_row($item, $cost);
 	$total+=$cost;
 
 	$db_trans->insert(array(
@@ -78,12 +78,12 @@ $was=$balance;
 
 if ($_POST['action']!='payment') {
 	if (!empty($config['tax']['rate'])) {
-		table_row('Sub-total',$total);
+		table_row('Sub-total', 0.0-$total);
 		$tax=round((0.0-$total) * $config['tax']['rate'] / 100,2);
 		
 		$item='TAX @ '.$config['tax']['rate'].'%';
-		$tax=0.0-$tax;
 		table_row($item, $tax);
+		$tax=0.0-$tax;
 
 		$db_trans->insert(array(
 			'email'=>$email,
@@ -93,11 +93,11 @@ if ($_POST['action']!='payment') {
 
 		$total+=$tax;
 	}
-	table_row('TOTAL',$total);
+	table_row('TOTAL',0.0-$total);
 }
 
 $balance+=$total;
-table_row('BALANCE (was '.number_format($was,2).')',$balance);
+table_row('BALANCE: ('.number_format($was,2).' - '.number_format(0.0-$total,2).') ',$balance);
 
 $db_users->update(array('email'=>$email), array('balance'=>$balance));
 
