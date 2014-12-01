@@ -7,20 +7,17 @@
 			<label for="email-ac">Email address</label>
 			<input type="email" class="form-control" name="email" id="email-ac" placeholder="Enter email">
 		</div>
-		<div class="form-group">
-			<?php foreach (array(1,2,3,4,5) as $count) { ?>
-			<div class="form-inline">
-				<!--
-				<label for="item1">Item</label>
-				-->
-				<div class="input-group">
-					<input type="text" class="form-control items" name="items[]" id="item<?php echo $count; ?>" placeholder="Item" />
-					<div class="input-group-addon">$</div><input type="text" class="form-control" name="costs[]" id="cost<?php echo $count; ?>" />
-				</div>
+		<div class="form-group" id="itemcopy">
+			<div class="input-group">
+				<input type="text" class="form-control items" name="items[]" id="item" placeholder="Item" />
+				<div class="input-group-addon">$</div><input type="text" class="form-control" name="costs[]" id="cost" />
 			</div>
-			<?php } ?>
 		</div>
-		<input type="hidden" name="action" value="purchase" />
+		<div id="itemnext"></div>
+		<button type="button" class="btn btn-default" id="additem">+</button>
+		<div class="form-group">
+			<input type="hidden" name="action" value="purchase" />
+		</div>
 		<button type="submit" class="btn btn-default active">Purchase</button>
 	</form>
 </div>
@@ -30,14 +27,21 @@
 		var a = $("#email-ac").autocomplete({
 			serviceUrl:"email_ac.php"
 		});
-		var b = $(".items").autocomplete({
-			onSelect: function(suggestion){
-				data = suggestion.data.split("|");
-				$(this).val(data[0]);
-				$(this).next().next().val(data[1]);
-			},
-			serviceUrl:"items_ac.php"
-		});
+		function attach_item_ac(){
+			var b = $(".items").autocomplete({
+				onSelect: function(suggestion){
+					data = suggestion.data.split("|");
+					$(this).val(data[0]);
+					$(this).next().next().val(data[1]);
+				},
+				serviceUrl:"items_ac.php"
+			});
+		}
+		attach_item_ac();
+		$("#additem").on("click", function (e) {
+			$("#itemnext").before(\'<div class="form-group">\'+$("#itemcopy").html()+\'</div>\');
+			attach_item_ac();
+		})
 	});
 	';
 	require 'foot.php';
