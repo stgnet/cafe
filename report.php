@@ -25,8 +25,11 @@ asort($balance, SORT_NUMERIC);
 foreach ($balance as $email => $bal) {
 	// look up the user record
 	$user=$db_users->record(array('email'=>$email));
-	$ubal=number_format($user['balance'],2);
-	$cbal=number_format($bal,2);
+	if ($user)
+	{
+		$ubal=number_format($user['balance'],2);
+		$cbal=number_format($bal,2);
+	}
 	if (!$user)	{
 		// oops, how did that happen?
 		echo '<p class="bg-warning">Created missing '.$email.' balance '.$bal.'</p>';
