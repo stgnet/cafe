@@ -9,7 +9,7 @@
 		</div>
 		<div class="form-group" id="itemcopy">
 			<div class="input-group">
-				<input type="text" class="form-control items" name="items[]" id="item" placeholder="Item" />
+				<input type="text" class="form-control items needs-ac" name="items[]" id="item" placeholder="Item" />
 				<div class="input-group-addon">$</div><input type="text" class="form-control" name="costs[]" id="cost" />
 			</div>
 		</div>
@@ -22,13 +22,14 @@
 	</form>
 </div>
 <?php
-	$postscript='
+	$postscript=<<<'SCRIPT'
 	jQuery(function(){
+		var item_html = '<div class="form-group">' + $("#itemcopy").html() + '</div>';
 		var a = $("#email-ac").autocomplete({
 			serviceUrl:"email_ac.php"
 		});
 		function attach_item_ac(){
-			var b = $(".items").autocomplete({
+			var b = $(".needs-ac").removeClass('needs-ac').autocomplete({
 				onSelect: function(suggestion){
 					data = suggestion.data.split("|");
 					$(this).val(data[0]);
@@ -38,10 +39,14 @@
 			});
 		}
 		attach_item_ac();
-		$("#additem").on("click", function (e) {
-			$("#itemnext").before(\'<div class="form-group">\'+$("#itemcopy").html()+\'</div>\');
+		
+		function add_another_item(){
+			$("#itemnext").before('<div class="form-group">'+item_html+'</div>');
 			attach_item_ac();
+		}
+		$("#additem").on("click", function (e) {
+			add_another_item();
 		})
 	});
-	';
+SCRIPT;
 	require 'foot.php';
