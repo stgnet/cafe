@@ -17,7 +17,17 @@ if (empty($_POST['email']) || empty($_POST['action'])) {
 $email = $_POST['email'];
 // validate the email here
 
-$message='Receipt for '.$_SERVER['HTTP_ORIGIN'].' purchase:'."\n\n";
+$from='noreply@example.org';
+if (!empty($config['email']['from'])) {
+	$from=$config['email']['from'];
+}
+
+$name='Cafe';
+if (!empty($config['site']['name'])) {
+	$name=$config['site']['name'];
+}
+
+$message='Receipt for '.$name.' purchase:'."\n\n";
 
 // look up the user record, add if not found
 $records = $db_users->records(array('email'=>$email));
@@ -103,14 +113,22 @@ table_row('BALANCE: ('.number_format($was,2).' - '.number_format(0.0-$total,2).'
 
 $db_users->update(array('email'=>$email), array('balance'=>$balance));
 
-$message.="\nFor a list of all transactions visit: http://cafe.stg.net/account.php?email=$email\n";
+$url=$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['SCRIPT_NAME']),'/').'/account.php?email='.urlencode($email);
+
+$message.="\nFor a list of all transactions visit: $url\n";
 
 $to      = $email;
-$subject = 'Digium Cafe Purchase';
-$headers = 'From: cafe@stg.net' . "\r\n" .
-	'Reply-To: cafe@stg.net' . "\r\n" .
+$subject = $name.' Purchase';
+$headers = 'From: ' . $from . "\r\n" .
+	'Reply-To: ' . $from . "\r\n" .
 	"MIME-version: 1.0\r\n".
 	"Content-type: text/plain; charset= iso-8859-1\r\n";
+
+if (!strstr($to, '@')) {
+	// if account isn't an email, send to admin instead
+	$to=$from;
+	$subject.=' on account '.$email;
+}
 
 mail($to, $subject, $message, $headers);
 

@@ -57,7 +57,7 @@ foreach ($balance as $email => $bal) {
 		$form='<form action="report.php" method="post"><input type="hidden" name="action" value="pay" />';
 		$form.='<input type="hidden" name="email" value="'.$email.'" />';
 		$form.='<button type="submit" class="btn btn-default btn-xs ">Pay (not working yet)</button></form>';
-		echo '<tr><td><a role="button" class="btn btn-default btn-xs" href="account.php?email='.$email.'">'.$email.'</a></td><td>$ '.number_format($actual_balance,2).'</td><td>'.$form.'</td></tr>'."\n";
+		echo '<tr><td><a role="button" class="btn btn-default btn-xs" href="account.php?email='.urlencode($email).'">'.$email.'</a></td><td>$ '.number_format($actual_balance,2).'</td><td>'.$form.'</td></tr>'."\n";
 	}
 	
 

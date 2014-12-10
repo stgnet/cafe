@@ -5,7 +5,7 @@
 	<form role="form" action="bought.php" method="post">
 		<div class="form-group">
 			<label for="email-ac">Email address</label>
-			<input type="email" class="form-control" name="email" id="email-ac" placeholder="Enter email">
+			<input type="text" class="form-control" name="email" id="email-ac" placeholder="Enter email">
 		</div>
 		<div class="form-group" id="itemcopy">
 			<div class="input-group">
