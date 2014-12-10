@@ -76,6 +76,8 @@ foreach ($items as $index => $item) {
 }
 $was=$balance;
 
+$message.='--------------------'."\n";
+
 if ($_POST['action']!='payment') {
 	if (!empty($config['tax']['rate'])) {
 		table_row('Sub-total', 0.0-$total);
@@ -101,6 +103,8 @@ table_row('BALANCE: ('.number_format($was,2).' - '.number_format(0.0-$total,2).'
 
 $db_users->update(array('email'=>$email), array('balance'=>$balance));
 
+$message.="\nFor a list of all transactions visit: http://cafe.stg.net/account.php?email=$email\n";
+
 $to      = $email;
 $subject = 'Digium Cafe Purchase';
 $headers = 'From: cafe@stg.net' . "\r\n" .
@@ -109,9 +113,6 @@ $headers = 'From: cafe@stg.net' . "\r\n" .
 	"Content-type: text/plain; charset= iso-8859-1\r\n";
 
 mail($to, $subject, $message, $headers);
-
-// temporary while launching
-mail('scott@griepentrog.com', $subject.' for '.$to, $message, $headers);
 
 ?>
 		</tbody>
