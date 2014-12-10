@@ -14,7 +14,7 @@
 			</div>
 		</div>
 		<div id="itemnext"></div>
-		<button type="button" class="btn btn-default" id="additem">+</button>
+		<button type="button" class="btn btn-default active" id="additem">+</button>
 		<div class="form-group">
 			<input type="hidden" name="action" value="purchase" />
 		</div>
@@ -46,7 +46,8 @@
 		}
 		$("#additem").on("click", function (e) {
 			add_another_item();
-		})
+		});
+		add_another_item();
 	});
 SCRIPT;
 	require 'foot.php';
