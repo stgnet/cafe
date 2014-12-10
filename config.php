@@ -214,7 +214,7 @@ $users_schema=array(
 	),
 	array(
 		'Field' => 'balance',
-		'Type' => 'decimal(5,2)',
+		'Type' => 'decimal(10,2)',
 		'Null' => 'YES',
 		'Key' => '',
 		'Default' => '',
@@ -236,7 +236,7 @@ $items_schema=array(
 	),
 	array(
 		'Field' => 'cost',
-		'Type' => 'decimal(5,2)',
+		'Type' => 'decimal(10,2)',
 		'Null' => 'YES',
 		'Key' => '',
 		'Default' => '',
@@ -275,7 +275,7 @@ $trans_schema=array(
 	),
 	array(
 		'Field' => 'amount',
-		'Type' => 'decimal(5,2)',
+		'Type' => 'decimal(10,2)',
 		'Null' => 'YES',
 		'Key' => '',
 		'Default' => '',
