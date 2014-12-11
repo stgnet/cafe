@@ -16,7 +16,8 @@
 		'Admin' => array(
 			'Payment '.$lock => 'payment.php',
 			'Report '.$lock => 'report.php',
-			'Items '.$lock => 'items.php'
+			'Items '.$lock => 'items.php',
+			'Change Email '.$lock => 'change_email.php'
 		)
 	);
 ?>

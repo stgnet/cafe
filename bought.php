@@ -1,6 +1,6 @@
 <?php
 
-$refresh='30;http://cafe.stg.net/menu.php';
+$refresh='30;'.$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['SCRIPT_NAME']),'/').'/menu.php';
 
 require 'config.php';
 require 'head.php';
