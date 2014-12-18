@@ -35,6 +35,18 @@ if (!$records)	{
 	// Add new user if not found
 	$db_users->insert(array('email'=>$email, 'balance'=>0));
 }
+
+// validate input before processing
+foreach ($_POST['items'] as $index => $item) {
+	if (empty($item) && empty($cost)) continue;
+	if (empty($item) || !is_numeric($_POST['costs'][$index]))
+	{
+		echo '<h3 class="bg-danger">Error: Invalid item entered - please go back and correct</h3>';
+		require 'foot.php';
+		return;
+	}
+}
+
 $records = $db_users->records(array('email'=>$email));
 if (!$records || !$records[0]) throw new Exception('Unexpected condition: unable to find user record after added');
 
