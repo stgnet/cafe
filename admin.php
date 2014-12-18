@@ -5,7 +5,7 @@
     if (empty($_SERVER['PHP_AUTH_USER']) || 
         empty($_SERVER['PHP_AUTH_PW']) ||
 		empty($config['admin'][$_SERVER['PHP_AUTH_USER']]) ||
-		$config['admin'][$_SERVER['PHP_AUTH_USER']]!=$_SERVER['PHP_AUTH_PW'])
+		$config['admin'][$_SERVER['PHP_AUTH_USER']]!=md5($_SERVER['PHP_AUTH_PW']))
     {
         header('HTTP/1.1 401 Unauthorized');
         header("WWW-Authenticate: Basic realm=\"$realm\"");

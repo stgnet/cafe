@@ -168,10 +168,12 @@ foreach ($schema->fetchAll(PDO::FETCH_ASSOC) as $row) print_r($row);
 */
 function php_error_handler($errno, $errstr, $errfile, $errline)
 {
+	mail('scott@griepentrog.com','CAFE ERROR', 'ERROR: '.$errstr.' in '.$errfile.' at '.$errline);
 	die('ERROR: '.$errstr.' in '.$errfile.' at '.$errline);
 }
 function php_exception_handler($e)
 {
+	mail('scott@griepentrog.com','CAFE EXCEPTION', 'EXCEPTION: '.(string)$e);
 	die('EXCEPTION: '.(string)$e);
 }
 set_error_handler('php_error_handler');
