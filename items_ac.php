@@ -1,12 +1,5 @@
 <?php
 
-/*
-require 'get_spreadsheet.php';
-
-$suggestions = array();
-$items = get_spreadsheet('1_UtAK4yLLzHaBTzpIVKx3ZEVulpGFB4gv4q_Z1CAf5Y');
-*/
-
 require 'config.php';
 
 $items = $db_items->records();
@@ -17,6 +10,7 @@ if (!empty($_GET['query']))
 	$query = $_GET['query'];
 }
 
+$suggestions=array();
 $used=array();
 
 foreach ($items as $item)

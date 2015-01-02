@@ -15,6 +15,7 @@
 	$menu_right=array(
 		'Admin' => array(
 			'Payment '.$lock => 'payment.php',
+			'Balances '.$lock => 'balances.php',
 			'Report '.$lock => 'report.php',
 			'Items '.$lock => 'items.php',
 			'Change Email '.$lock => 'change_email.php'
